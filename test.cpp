@@ -1,7 +1,6 @@
-#include<bits/stdc++.h>
-using namespace std;
+#include <iostream>
 
 int main()
 {
-	cout<<"LOL"<<endl;
+	std::cout<<"LOL"<<std::endl;
 }
