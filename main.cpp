@@ -7,17 +7,14 @@ int main()
 	std::cout << "listen? (y/n)\n";
 	char c;
 	std::cin >> c;
-	std::cout << "\nip to connect: \n";
-	std::string ip;
-	std::cin >> ip;
 	std::cout << "\nport:\n";
 	int port;
 	std::cin >> port;
 
-	sf::TcpSocket socket;
-
 	if(c == 'y')
 	{
+		sf::TcpSocket socket;
+
 		sf::TcpListener listener;
 		if (listener.listen(port) != sf::Socket::Done)
 			return std::cout << "xd\n", 0;
@@ -26,23 +23,31 @@ int main()
 			return std::cout << "xd\n", 0;
 		std::cout << "listener accepted socket\n";
 
-		while(true)
+		sf::Packet packet;
+		while(socket.receive(packet) == sf::Socket::Done)
 		{
-			sf::Packet packet;
-			int32_t x;
-			socket.receive(packet);
 			std::cout << "socket received packet\n";
+			int32_t x;
 			packet >> x;
 			std::cout << "received id " << x << "\n";
 		}
 	}
 	else
 	{
+		std::cout << "\nip to connect: \n";
+		std::string ip;
+		std::cin >> ip;
+		std::cout << "\nmax id:\n";
+		int max;
+		std::cin >> max;
+
+		sf::TcpSocket socket;
+
 		sf::Socket::Status status = socket.connect(ip, port);
 		if (status != sf::Socket::Done)
 			return std::cout << "xd\n", 0;
 
-		for(int i = 0; i != 100; ++i)
+		for(int i = 0; i != max; ++i)
 		{
 			sf::Packet packet;
 			int32_t x = i;
@@ -50,6 +55,8 @@ int main()
 			socket.send(packet);
 			std::cout << "send id " << x << "\n";
 		}
+
+		socket.disconnect();
 	}
 
 	return 0;
