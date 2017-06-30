@@ -1,10 +1,10 @@
-CXX=clang++
-LDLIBS=-lsfml-graphics -lsfml-window -lsfml-system -lsfml-network
+CXX=g++
+LDLIBS=-lsfml-graphics -lsfml-window -lsfml-system -lsfml-network -pthread
 LDFLAGS=-std=c++11 -Wall
-CPPFLAGS=
+CPPFLAGS=-std=c++11 -Wall
 RM=rm -f
 
-SRCS=main.cpp
+SRCS=main.cpp Client/Client.cpp SocketWrapper.cpp Client/ClientListener.cpp Client/ClientSender.cpp
 OBJS=$(subst .cpp,.o,$(SRCS))
 
 all: main

@@ -1,6 +1,7 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Network.hpp>
 #include <iostream>
+#include "Client/Client.h"
 
 int main()
 {
@@ -34,29 +35,8 @@ int main()
 	}
 	else
 	{
-		std::cout << "\nip to connect: \n";
-		std::string ip;
-		std::cin >> ip;
-		std::cout << "\nmax id:\n";
-		int max;
-		std::cin >> max;
-
-		sf::TcpSocket socket;
-
-		sf::Socket::Status status = socket.connect(ip, port);
-		if (status != sf::Socket::Done)
-			return std::cout << "xd\n", 0;
-
-		for(int i = 0; i != max; ++i)
-		{
-			sf::Packet packet;
-			int32_t x = i;
-			packet << x;
-			socket.send(packet);
-			std::cout << "send id " << x << "\n";
-		}
-
-		socket.disconnect();
+		Client client("puchalski.pro", 35353, "test");
+		client.join();
 	}
 
 	return 0;
