@@ -4,7 +4,7 @@ LDFLAGS=-std=c++11 -Wall
 CPPFLAGS=-std=c++11 -Wall
 RM=rm -f
 
-SRCS=main.cpp Client/Client.cpp SocketWrapper.cpp Client/ClientListener.cpp Client/ClientSender.cpp
+SRCS=main.cpp Client/Client.cpp Client/ClientListener.cpp Client/ClientSender.cpp Server/Server.cpp Server/ServerListener.cpp Server/ServerSender.cpp SocketWrapper.cpp
 OBJS=$(subst .cpp,.o,$(SRCS))
 
 all: main
