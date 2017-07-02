@@ -20,5 +20,7 @@ depend: .depend
 
 clean:
 	$(RM) $(OBJS)
+	rm main
+	rm .depend
 
 include .depend

@@ -3,6 +3,7 @@
 #include "ClientSender.h"
 #include "../SocketWrapper.h"
 #include <thread>
+#include <cassert>
 
 class Client
 {

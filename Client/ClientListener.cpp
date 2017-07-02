@@ -1,5 +1,4 @@
 #include "ClientListener.h"
-#include <iostream>
 
 ClientListener::ClientListener(SocketWrapper &s) : socket_wrapper(s) {}
 

@@ -1,8 +1,8 @@
 #pragma once
 #include "../SocketWrapper.h"
+#include "Server.h"
 
 class Server;
-#include "Server.h"
 
 class ServerListener
 {

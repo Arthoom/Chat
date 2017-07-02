@@ -9,8 +9,8 @@ int main()
 	std::cout << "listen? (y/n)\n";
 	char c;
 	std::cin >> c;
-	std::cout << "\nport:\n";
-	int port;
+	std::cout << "port: \n";
+	unsigned short port;
 	std::cin >> port;
 
 	if(c == 'y')
@@ -20,7 +20,7 @@ int main()
 	}
 	else
 	{
-		Client client("puchalski.pro", 35353, "test");
+		Client client("puchalski.pro", port, "test");
 		client.join();
 	}
 

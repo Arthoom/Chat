@@ -1,11 +1,12 @@
 #pragma once
 #include "ServerSender.h"
-class ServerListener;
 #include "ServerListener.h"
 #include "../SocketWrapper.h"
 #include <thread>
 #include <mutex>
 #include <cassert>
+
+class ServerListener;
 
 class Server
 {
